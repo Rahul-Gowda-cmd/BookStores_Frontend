@@ -1,0 +1,176 @@
+<div class="user-card">
+  <div class="image-card">
+    <img class="logo" src="../../../assets/2766594.png" alt="" />
+    <p>ONLINE BOOK SHOPPING</p>
+  </div>
+  <div class="login-main">
+    <div class="login-sign">
+      <div class="but-div">
+        <div
+          class="but-cs"
+          (click)="signup = false"
+          style="cursor: pointer"
+          [ngStyle]="signup ? { color: '#878787' } : { color: 'black' }"
+        >
+          Login
+          <button class="rect" *ngIf="!signup"></button>
+        </div>
+        <div
+          class="but-cs"
+          (click)="signup = true"
+          style="cursor: pointer"
+          [ngStyle]="!signup ? { color: '#878787' } : { color: 'black' }"
+        >
+          SignUp
+          <button class="rect" *ngIf="signup"></button>
+        </div>
+      </div>
+      <div class="form-content" *ngIf="signup">
+        <form [formGroup]="RegisterForm">
+          <div class="inputs">
+            <label for="fullname">FullName</label>
+            <mat-form-field appearance="outline" class="email">
+              <input matInput formControlName="FullName" />
+              <mat-error
+                class="alert"
+                *ngIf="RegisterForm.get('FullName')?.errors?.required"
+                >Enter Full Name</mat-error
+              >
+              <mat-error
+                class="alert"
+                *ngIf="RegisterForm.get('FullName')?.errors?.minlength"
+                >Minimum 3 length
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="inputs">
+            <label for="email">Email Id</label>
+            <mat-form-field appearance="outline" class="email">
+              <input matInput formControlName="Email" />
+              <mat-error
+                class="alert"
+                *ngIf="RegisterForm.get('Email')?.errors?.required"
+                >Enter Email</mat-error
+              >
+              <mat-error
+                class="alert"
+                *ngIf="RegisterForm.get('Email')?.errors?.email"
+                >Invalid Email
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="inputs">
+            <label for="password">Password</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                type="password"
+                formControlName="Password"
+                [type]="hide ? 'text' : 'password'"
+              />
+              <mat-icon matSuffix (click)="hide = !hide">{{
+                hide ? "visibility" : "visibility_off"
+              }}</mat-icon>
+              <mat-error
+                class="alert"
+                *ngIf="RegisterForm.get('Password')?.errors?.required"
+                >Password is required</mat-error
+              >
+              <mat-error
+                class="alert"
+                *ngIf="RegisterForm.get('Password')?.errors?.pattern"
+                >Invalid Password
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="inputs">
+            <label for="phone">Mobile Number</label>
+            <mat-form-field appearance="outline" class="email">
+              <input matInput formControlName="Mobile" />
+              <mat-error
+                class="alert"
+                *ngIf="RegisterForm.get('Mobile')?.errors?.required"
+                >Number is required</mat-error
+              >
+              <mat-error
+                class="alert"
+                *ngIf="RegisterForm.get('Mobile')?.errors?.pattern"
+                >Invalid Number
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="sign-but">
+            <button
+              (click)="Register()"
+              class="register"
+              style="cursor: pointer"
+            >
+              Signup
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="form-content" style="margin-top: 25px" *ngIf="!signup">
+        <form [formGroup]="LoginForm">
+          <div class="inputs">
+            <label for="email">Email Id</label>
+            <mat-form-field appearance="outline" class="email">
+              <input matInput formControlName="email" />
+              <mat-error
+                class="alert"
+                *ngIf="LoginForm.get('email')?.errors?.required"
+                >Enter Email</mat-error
+              >
+              <mat-error
+                class="alert"
+                *ngIf="LoginForm.get('email')?.errors?.email"
+                >Invalid Email
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="inputs">
+            <label for="password">Password</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                type="password"
+                formControlName="password"
+                [type]="hide ? 'text' : 'password'"
+              />
+              <mat-icon matSuffix (click)="hide = !hide">{{
+                hide ? "visibility" : "visibility_off"
+              }}</mat-icon>
+              <mat-error
+                class="alert"
+                *ngIf="LoginForm.get('password')?.errors?.required"
+                >Password is required</mat-error
+              >
+              <mat-error
+                class="alert"
+                *ngIf="LoginForm.get('password')?.errors?.pattern"
+                >Invalid Password
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <p class="forgot-password" [routerLink]="['/forgotpassword']">
+            Forget Password?
+          </p>
+          <div class="login-but">
+            <button (click)="Login()">Login</button>
+          </div>
+          <div class="or-option">
+            <div class="or-content">
+              <mat-divider class="mat-divider"></mat-divider>
+              <p>OR</p>
+              <mat-divider class="mat-divider"></mat-divider>
+            </div>
+          </div>
+          <div class="or-option">
+            <button mat-raised-button>Facebook</button>
+            <button mat-raised-button>Google</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,307 @@
+.user-card {
+  width: 729px;
+  height: 391px;
+  border-radius: 21px;
+  background-color: #f5f5f5;
+  display: flex;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+}
+.logo {
+  width: 245px;
+  height: 245px;
+  border-radius: 50%;
+}
+.image-card {
+  display: flex;
+  flex-direction: column;
+  padding-top: 52px;
+  padding-left: 53px;
+  padding-bottom: 94px;
+  p {
+    font-family: "Roboto", sans-serif !important;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+    text-align: center;
+  }
+}
+.login-sign {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  .but-div {
+    width: 70%;
+    div {
+      font-family: "Roboto", sans-serif !important;
+      font-style: normal;
+      font-variant: normal;
+      font-size: 25px;
+      line-height: 33px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+    }
+  }
+  .form-content {
+    width: 70%;
+    height: 100%;
+    margin-top: 13px;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    .inputs {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+label {
+  font-family: "Roboto", sans-serif !important;
+  font-style: normal;
+  font-variant: normal;
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: normal;
+}
+.but-div {
+  display: flex;
+  justify-content: space-between;
+}
+.login-main {
+  width: 387px;
+  height: 423px;
+  border-radius: 6px;
+  box-shadow: 0px 5px 15px #00000029;
+  border: 1px solid #e4e4e4;
+  margin-top: -19px;
+  opacity: 1;
+  position: absolute;
+  left: 350px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+  padding: 0px !important;
+}
+.inputs {
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 10px;
+  margin-top: 3px;
+  color: black;
+  font-family: "Roboto" sans-serif;
+  font-size: 15px;
+  line-height: 16px;
+}
+.rect {
+  background-color: #a03037;
+  width: 22px;
+  height: 5px;
+  border-radius: 4px;
+  border: none;
+}
+.but-cs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#password {
+  border: none;
+  width: 100%;
+  &:focus-visible {
+    outline: none;
+  }
+}
+.pass-div {
+  display: flex;
+  width: 99%;
+  mat-icon {
+    align-self: center;
+    margin-right: 5px;
+    color: #9d9d9d;
+  }
+}
+.sign-but {
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 30px;
+  button {
+    background-color: #a03037;
+    border: none;
+    border-radius: 3px;
+    height: 37px;
+    width: 100%;
+    color: white;
+    font-family: "Roboto", sans-serif !important;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: normal;
+    text-align: center;
+  }
+}
+.or-option {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0px;
+  .or-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 191px;
+    p {
+      padding: 0px 13px;
+      font-family: "Roboto", sans-serif !important;
+      font-style: normal;
+      font-variant: normal;
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 600;
+    }
+  }
+}
+.mat-divider {
+  width: 30%;
+  color: #c5c2c2;
+}
+::ng-deep .mat-form-field-suffix {
+  align-self: center;
+  padding: 5px;
+  margin-bottom: 2px;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0px !important;
+}
+::ng-deep .mat-form-field-infix {
+  border-top: none;
+}
+::ng-deep .mat-form-field-appearance-outline {
+  color: rgb(118, 118, 118) !important;
+}
+::ng-deep
+  .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid
+  .mat-form-field-outline-thick {
+  color: red !important;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-subscript-wrapper {
+  padding: 0px !important;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin: 0px !important;
+}
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 15px !important;
+}
+.or-option button {
+  width: 119px;
+  height: 37px;
+  border-radius: 3px;
+  font-family: "Roboto", sans-serif !important;
+  font-style: normal;
+  font-variant: normal;
+  font-size: 12px;
+  line-height: 16px;
+  &:nth-child(1) {
+    background-color: #4266b2;
+    color: white;
+    margin-right: 7px;
+  }
+  &:nth-child(2) {
+    background-color: #f5f5f5;
+    color: black;
+    border: 1px solid #e4e4e4;
+  }
+}
+.forgot-password {
+  text-align: end;
+  color: #9d9d9d;
+  margin-top: -15px;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif !important;
+  font-style: normal;
+  font-variant: normal;
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: normal;
+}
+.login-but {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  button {
+    background-color: #a03037;
+    border: none;
+    border-radius: 3px;
+    height: 37px;
+    width: 100%;
+    color: white;
+    font-family: "Roboto", sans-serif !important;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: normal;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+.alert {
+  color: #ff001c;
+  font-family: "Roboto", sans-serif !important;
+  font-style: normal;
+  font-variant: normal;
+  font-size: 10px;
+  line-height: 10px;
+  font-weight: normal;
+  padding-top: 2px;
+}
+.err {
+  color: red;
+  font-size: 10px;
+  display: inline;
+}
+.err-input {
+  border: 2px solid;
+  border-color: #ff001c;
+}
+mat-icon {
+  margin-bottom: 2px;
+}
+@media only screen and (max-width: 770px) {
+  .image-card {
+    display: none;
+  }
+  .user-card {
+    width: 100%;
+    height: 0%;
+    justify-content: center;
+    background-color: white;
+  }
+  .login-main {
+    position: static;
+    margin-top: 20px;
+  }
+}
+@media only screen and (max-width: 525px) {
+  .login-main {
+    position: static;
+    margin-top: 40px;
+    box-shadow: none;
+    border: none;
+  }
+}
