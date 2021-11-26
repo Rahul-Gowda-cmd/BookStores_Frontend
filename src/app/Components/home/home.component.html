@@ -1,1 +1,355 @@
-<p>home works!</p>
+<div>
+  <div class="header">
+    <div class="temp"></div>
+    <div
+      class="Logo"
+      [class]="isSearch ? 'media-Logo' : ''"
+      (click)="option = 'Home'"
+    >
+      <img src="../../../assets/log.jfif" alt="" />
+      <p>Bookstore</p>
+    </div>
+    <div class="search-div" [class]="isSearch ? 'media-search-div' : ''">
+      <mat-icon matPrefix matTooltip="Search" *ngIf="!isSearch"
+        >search</mat-icon
+      >
+      <mat-icon
+        matPrefix
+        matTooltip="Search"
+        *ngIf="isSearch"
+        (click)="isSearch = !isSearch"
+        >arrow_back</mat-icon
+      >
+      <input
+        matInput
+        placeholder="Search..."
+        [(ngModel)]="search"
+        (ngModelChange)="Search()"
+      />
+    </div>
+    <div class="icons">
+      <div class="search" *ngIf="!isSearch">
+        <i
+          class="material-icons icon"
+          style="font-size: 25px"
+          (click)="isSearch = !isSearch"
+          >search</i
+        >
+        <p>Search</p>
+      </div>
+      <div class="person">
+        <i
+          class="material-icons icon"
+          [matMenuTriggerFor]="UserDetails == null ? profilemenu : UserProfile"
+          >person_outline</i
+        >
+        <p *ngIf="UserDetails == null">Profile</p>
+        <p *ngIf="UserDetails != null">{{ UserDetails.fullName }}</p>
+      </div>
+      <div class="cart">
+        <span><i class="material-icons-outlined icon">shopping_cart</i></span>
+        <p>Cart</p>
+      </div>
+    </div>
+    <div class="temp"></div>
+  </div>
+  <div class="book-main">
+    <div class="book-head" style="margin-bottom: 30px" *ngIf="option == 'Home'">
+      <div class="book-count">
+        Books
+        <p>({{ books.length }} items)</p>
+      </div>
+      <div>
+        <select
+          name="sort"
+          id="sort"
+          class="sort"
+          #sel
+          (change)="sort(sel.value)"
+        >
+          <option value="" [disabled]="true">Sort By Relevance</option>
+          <option value="2">Price: High to low</option>
+          <option value="1">Price: Low to High</option>
+          <option value="3">Newest Arrivals</option>
+        </select>
+      </div>
+    </div>
+    <div
+      class="book-head"
+      style="margin-bottom: 30px"
+      *ngIf="option == 'BookDescription'"
+    >
+      <div class="book-count">
+        <p
+          style="
+            font-size: 16px;
+            line-height: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: #9d9d9d;
+            cursor: pointer;
+          "
+          (click)="option = 'Home'"
+        >
+          Home
+        </p>
+        <p
+          style="
+            font-size: 16px;
+            line-height: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: #0a0102;
+            margin-left: 1px;
+          "
+        >
+          /Books({{ bookId }})
+        </p>
+      </div>
+    </div>
+    <div
+      class="book-head"
+      style="margin-bottom: 30px"
+      *ngIf="option == 'WishList'"
+    >
+      <div class="book-count">
+        <p
+          style="
+            font-size: 16px;
+            line-height: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: #9d9d9d;
+            cursor: pointer;
+          "
+          (click)="option = 'Home'"
+        >
+          Home
+        </p>
+        <p
+          style="
+            font-size: 16px;
+            line-height: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: #0a0102;
+            margin-left: 1px;
+          "
+        >
+          /WishList
+        </p>
+      </div>
+      <div></div>
+    </div>
+    <div
+      class="book-head"
+      style="margin-bottom: 30px"
+      *ngIf="option == 'PersonDetail'"
+    >
+      <div class="book-count">
+        <p
+          style="
+            font-size: 16px;
+            line-height: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: #9d9d9d;
+            cursor: pointer;
+          "
+          (click)="option = 'Home'"
+        >
+          Home
+        </p>
+        <p
+          style="
+            font-size: 16px;
+            line-height: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: #0a0102;
+            margin-left: 1px;
+          "
+        >
+          / Profile
+        </p>
+      </div>
+      <div></div>
+    </div>
+    <div class="book-head" style="margin-bottom: 30px" *ngIf="option == 'Cart'">
+      <div class="book-count">
+        <p
+          style="
+            font-size: 16px;
+            line-height: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: #9d9d9d;
+            cursor: pointer;
+          "
+          (click)="option = 'Home'"
+        >
+          Home
+        </p>
+        <p
+          style="
+            font-size: 16px;
+            line-height: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: #0a0102;
+            margin-left: 1px;
+          "
+        >
+          / Cart
+        </p>
+      </div>
+      <div></div>
+    </div>
+
+    <div
+      class="book-head"
+      style="margin-bottom: 30px"
+      *ngIf="option == 'orders'"
+    >
+      <div class="book-count">
+        <p
+          style="
+            font-size: 16px;
+            line-height: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: #9d9d9d;
+            cursor: pointer;
+          "
+          (click)="option = 'Home'"
+        >
+          Home
+        </p>
+        <p
+          style="
+            font-size: 16px;
+            line-height: 16px;
+            font-family: 'Roboto', sans-serif;
+            color: #0a0102;
+            margin-left: 1px;
+          "
+        >
+          / Order
+        </p>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="book-wrap" *ngIf="option == 'Home'">
+      <!-- <div class="book-comp" *ngFor="let book of books | paginate: { itemsPerPage: 12, currentPage: p }" (click)="option='BookDescription';bookdetails = book;bookId=book['bookId']" >   -->
+      <div
+        class="book-comp"
+        *ngFor="let book of books"
+        (click)="
+          option = 'BookDescription';
+          bookdetails = book;
+          bookId = book['bookId']
+        "
+      >
+        <div class="book-img">
+          <img width="100px" src="{{ book['bookImage'] }}" alt="" />
+        </div>
+        <div class="book-content">
+          <p class="book-name">{{ book["bookName"] }}</p>
+          <p class="author-name">{{ book["author"] }}</p>
+          <div style="display: flex; align-items: center">
+            <div class="rating">
+              <p>5</p>
+              <i class="material-icons">star</i>
+            </div>
+            <p class="rating-count">({{ 20 }})</p>
+          </div>
+          <div class="cost">
+            Rs. {{ book["price"] }}
+            <p>Rs.{{ book["discountPrice"] }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <!-- <app-wishlist *ngIf="option == 'WishList'"></app-wishlist> -->
+      <div *ngIf="option == 'wishlistLogout'">
+        <div class="maincontent">
+          <div class="middleItem">
+            <h2 style="margin: 0 0 10px 0">PLEASE LOG IN</h2>
+            <P class="p-tag">Login to view items in your wishlist</P>
+            <img src="../../../assets/Whistlist.svg" alt="" />
+            <button
+              mat-stroked-button
+              color="warn"
+              style="margin-top: 25px"
+              [routerLink]="['/login']"
+            >
+              LOGIN/SIGNUP
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <!-- <app-order *ngIf="option == 'orders'"></app-order> -->
+    </div>
+    <!-- <app-book-description *ngIf="option=='BookDescription'" [bookdetails]='bookdetails' (init)="ngOnInit();"></app-book-description>
+          <app-persondetail *ngIf="option == 'PersonDetail'"  (init)="ngOnInit()"></app-persondetail>
+          <app-cart *ngIf="option == 'Cart'" (init)="ngOnInit()"></app-cart> -->
+    <div class="page" *ngIf="option == 'Home'">
+      <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+    </div>
+  </div>
+  <mat-menu #profilemenu="matMenu" class="profilemenu">
+    <div class="profile-main-div">
+      <p>Welcome</p>
+      <p>To access account and manage orders</p>
+      <button mat-menu-item class="profile-button" [routerLink]="['/login']">
+        LOGIN/SIGNUP
+      </button>
+      <mat-divider></mat-divider>
+      <div class="icon-div">
+        <i class="material-icons-outlined">markunread_mailbox</i>
+        <span>My Orders</span>
+      </div>
+      <div class="icon-div" (click)="option = 'wishlistLogout'">
+        <i class="material-icons">favorite_border</i>
+        <span>Wishlist</span>
+      </div>
+    </div>
+  </mat-menu>
+  <mat-menu #UserProfile="matMenu" class="UserProfile">
+    <div *ngIf="UserDetails != null">
+      <p class="profile-padding">Hello {{ UserDetails.fullName }},</p>
+      <div
+        class="icon-div my-profile profile-padding"
+        (click)="option = 'PersonDetail'"
+      >
+        <i class="material-icons icons">person_outline</i>
+        <span>Profile</span>
+      </div>
+      <div class="icon-div profile-padding" (click)="option = 'orders'">
+        <i class="material-icons-outlined">markunread_mailbox</i>
+        <span>My Orders</span>
+      </div>
+      <div class="icon-div profile-padding" (click)="option = 'WishList'">
+        <i class="material-icons">favorite_border</i>
+        <span>Wishlist</span>
+      </div>
+      <button
+        mat-menu-item
+        class="profile-button"
+        style="margin: 15px 60px 10px 35px"
+        (click)="Logout()"
+      >
+        Logout
+      </button>
+    </div>
+  </mat-menu>
+</div>
+<div
+  class="footer"
+  [class]="
+    option == 'WishList' || option == 'Cart' || option == 'orders'
+      ? 'footer-t'
+      : ''
+  "
+  *ngIf="option != 'BookDescription' && option != 'wishlistLogout'"
+>
+  <div class="footer-content">
+    <p>Copyright ©️ 2020, Bookstore Private Limited. All Rights Reserved</p>
+  </div>
+</div>

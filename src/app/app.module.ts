@@ -10,6 +10,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,6 +41,7 @@ import { ResetPasswordComponent } from './Components/reset-password/reset-passwo
     MatCardModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
