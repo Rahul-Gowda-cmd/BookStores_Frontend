@@ -1,0 +1,31 @@
+<div class="w-main">
+  <div class="w-head">
+    <p>My Wishlist ({{ WishList.length }})</p>
+  </div>
+  <div class="w-wrap" *ngFor="let list of WishList">
+    <div class="w-book">
+      <div class="wb-con">
+        <div>
+          <img src="{{ list.product_id.bookImage }}" width="100px" alt="" />
+        </div>
+        <div class="wb-detail">
+          <p class="book-name">{{ list.product_id.bookName }}</p>
+          <p class="author">{{ list.product_id.author }}</p>
+          <div class="cost">
+            <p class="rupees">Rs. {{ list.product_id.price }}</p>
+            <p class="disc">Rs. {{ list.product_id.discountPrice }}</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <i
+          class="material-icons"
+          style="color: #9d9d9d; font-size: 25px; cursor: pointer"
+          (click)="RemoveFromWishList(list)"
+          >delete</i
+        >
+      </div>
+    </div>
+    <mat-divider style="margin-top: 30px"></mat-divider>
+  </div>
+</div>

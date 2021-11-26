@@ -18,6 +18,9 @@ import { LoginComponent } from './Components/login/login.component';
 import { HomeComponent } from './Components/home/home.component';
 import { ForgotpasswordComponent } from './Components/forgotpassword/forgotpassword.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { BookDescriptionComponent } from './Components/book-description/book-description.component';
+import { CartComponent } from './Components/cart/cart.component';
+import { WishListComponent } from './Components/wish-list/wish-list.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { ResetPasswordComponent } from './Components/reset-password/reset-passwo
     HomeComponent,
     ForgotpasswordComponent,
     ResetPasswordComponent,
+    BookDescriptionComponent,
+    CartComponent,
+    WishListComponent,
   ],
   imports: [
     BrowserModule,

@@ -47,7 +47,11 @@
         <p *ngIf="UserDetails != null">{{ UserDetails.fullName }}</p>
       </div>
       <div class="cart">
-        <span><i class="material-icons-outlined icon">shopping_cart</i></span>
+        <span
+          ><i class="material-icons-outlined icon" (click)="option = 'Cart'"
+            >shopping_cart</i
+          ></span
+        >
         <p>Cart</p>
       </div>
     </div>
@@ -264,7 +268,7 @@
     </div>
 
     <div>
-      <!-- <app-wishlist *ngIf="option == 'WishList'"></app-wishlist> -->
+      <app-wish-list *ngIf="option == 'WishList'"></app-wish-list>
       <div *ngIf="option == 'wishlistLogout'">
         <div class="maincontent">
           <div class="middleItem">
@@ -286,9 +290,18 @@
     <div>
       <!-- <app-order *ngIf="option == 'orders'"></app-order> -->
     </div>
-    <!-- <app-book-description *ngIf="option=='BookDescription'" [bookdetails]='bookdetails' (init)="ngOnInit();"></app-book-description>
-          <app-persondetail *ngIf="option == 'PersonDetail'"  (init)="ngOnInit()"></app-persondetail>
-          <app-cart *ngIf="option == 'Cart'" (init)="ngOnInit()"></app-cart> -->
+    <app-book-description
+      *ngIf="option == 'BookDescription'"
+      [bookdetails]="bookdetails"
+      (init)="ngOnInit()"
+    ></app-book-description>
+    <!-- <app-persondetail *ngIf="option == 'PersonDetail'"  (init)="ngOnInit()"></app-persondetail> -->
+    <app-cart
+      *ngIf="option == 'Cart'"
+      [cartdetails]="getCart"
+      (init)="ngOnInit()"
+    >
+    </app-cart>
     <div class="page" *ngIf="option == 'Home'">
       <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
     </div>

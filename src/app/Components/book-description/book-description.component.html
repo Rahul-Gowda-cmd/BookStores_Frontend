@@ -1,0 +1,140 @@
+<div class="book-main-div">
+  <div class="image-div">
+    <div class="book-image">
+      <div class="stock" *ngIf="bookdetails['quantity'] == 0">
+        <div>Out of stock</div>
+      </div>
+      <img
+        src="{{ bookdetails['bookImage'] }}"
+        alt=""
+        width="282px"
+        height="364px"
+      />
+    </div>
+    <div class="book-function">
+      <button
+        style="cursor: pointer"
+        class="add-to-bag"
+        (click)="AddBooktoCart()"
+      >
+        {{
+          bookdetails["quantity"] == 0
+            ? "NOTIFY ME"
+            : added
+            ? "ADD ONE MORE"
+            : "ADD TO BAG"
+        }}
+      </button>
+      <button
+        class="fav-icon"
+        style="cursor: pointer"
+        (click)="AddtoWishList()"
+      >
+        <i class="material-icons">favorite_border</i>
+        <span>WISHLIST</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="book-image-content">
+    <div class="book-contents">
+      <p class="book-names">{{ bookdetails["bookName"] }}</p>
+      <p class="author-names">{{ bookdetails["author"] }}</p>
+      <div style="display: flex; align-items: center">
+        <div class="rating">
+          <p>
+            {{
+              total / feedBackList.length > 0 ? total / feedBackList.length : 0
+            }}
+          </p>
+          <i class="material-icons">star</i>
+        </div>
+        <p class="rating-count">({{ feedBackList.length }})</p>
+      </div>
+      <div class="cost">
+        Rs. {{ bookdetails["discountPrice"] }}
+        <p>{{ bookdetails["price"] }}</p>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="book-detail">
+      <li>Book Details</li>
+      <p>{{ bookdetails["bookDetail"] }}</p>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="customer-rating-main-div">
+      <p class="customer-feedback">Customer Feedback</p>
+      <div class="customer-rating" [formGroup]="FeedbackForm">
+        <p>5</p>
+        <div
+          style="
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+          "
+        >
+          <div class="rate">
+            <ngx-star-rating
+              formControlName="rate"
+              [id]="'rating'"
+            ></ngx-star-rating>
+          </div>
+        </div>
+        <textarea
+          placeholder="Write your Review"
+          formControlName="comment"
+          id="textarea"
+          id="textarea"
+        ></textarea>
+
+        <div style="display: flex; justify-content: space-between">
+          <div></div>
+          <button mat-flat-button class="buttons">Submit</button>
+        </div>
+      </div>
+      <div
+        *ngFor="let rating of feedBackList"
+        style="display: flex; align-items: flex-start; margin-top: 20px"
+      >
+        <img
+          src="../../../assets/account.png"
+          width="30px"
+          height="30px"
+          style="padding-left: 15px; margin-right: 15px; padding-top: 8px"
+        />
+        <div
+          style="display: flex; flex-direction: column; justify-content: center"
+        >
+          <p
+            style="
+              font-size: 15px;
+              line-height: 20px;
+              margin-bottom: -8px;
+              text-transform: capitalize;
+              font-weight: 500;
+            "
+          >
+            {{ rating["userName"] }}
+          </p>
+          <div style="display: flex; color: #ffce00">
+            <ngx-star-rating
+              [ngModel]="rating['rating']"
+              [disabled]="true"
+              [id]="'rating-1'"
+            ></ngx-star-rating>
+          </div>
+          <p
+            style="
+              color: #707070;
+              font-size: 12px;
+              line-height: 16px;
+              margin-top: 3px;
+            "
+          >
+            {{ rating["comments"] }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

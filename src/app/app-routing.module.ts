@@ -4,6 +4,8 @@ import { LoginComponent } from './Components/login/login.component';
 import { ForgotpasswordComponent } from './Components/forgotpassword/forgotpassword.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { HomeComponent } from './Components/home/home.component';
+import { BookDescriptionComponent } from './Components/book-description/book-description.component';
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'forgotpassword', component: ForgotpasswordComponent },

@@ -1,0 +1,248 @@
+<div>
+  <div class="cart">
+    <p>Cart</p>
+    <p style="padding-left: 20px">My Cart({{ cartdetails.length }})</p>
+    <div class="w-wrap" *ngFor="let cartbook of cartdetails">
+      <div class="w-book">
+        <div class="wb-con">
+          <div>
+            <img
+              src="{{ cartbook.product_id.bookImage }}"
+              width="100px"
+              alt=""
+            />
+          </div>
+          <div class="wb-detail">
+            <p class="book-name">{{ cartbook.product_id.bookName }}</p>
+            <p class="author">{{ cartbook.product_id.product_id }}</p>
+            <div class="cost">
+              <p class="rupees">Rs. {{ cartbook.product_id.price }}</p>
+              <p class="disc">Rs. {{ cartbook.product_id.discountPrice }}</p>
+            </div>
+            <div class="cart-count-div">
+              <div class="cart-count">
+                <i
+                  class="material-icons"
+                  (click)="ReduceCount(cartbook)"
+                  style="cursor: pointer"
+                  >remove</i
+                >
+                <input
+                  type="text"
+                  #count
+                  value="{{ cartbook.quantityToBuy }}"
+                />
+                <i
+                  class="material-icons"
+                  (click)="addtoCart(cartbook)"
+                  style="cursor: pointer"
+                  >add</i
+                >
+              </div>
+              <p (click)="RemoveBook(cartbook)" style="cursor: pointer">
+                Remove
+              </p>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+    <div *ngIf="cartDetails.length > 0" class="place-order">
+      <button
+        mat-button
+        class="order-but"
+        style="align-self: flex-end"
+        (click)="placeorder = 'Address'"
+        *ngIf="placeorder == 'order'"
+      >
+        Place Order
+      </button>
+    </div>
+  </div>
+  <div class="cart">
+    <div class="cart-cust">
+      <div class="header">
+        <p>{{ placeorder == "Address" ? "Customer Details" : "Address" }}</p>
+        <button mat-button class="add-new" *ngIf="placeorder == 'Address'">
+          Add New Address
+        </button>
+      </div>
+      <div
+        style="width: 90%"
+        *ngIf="placeorder == 'Address' || placeorder == 'ordersummary'"
+      >
+        <div class="cust-per">
+          <div>
+            <label for="name">Full Name</label>
+            <input
+              type="text"
+              name="name"
+              id=""
+              value="{{ user['fullName'] }}"
+            />
+          </div>
+          <div>
+            <label for="email">Email Id</label>
+            <input type="email" name="email" value="{{ user['emailId'] }}" />
+          </div>
+        </div>
+        <div style="margin-top: 25px">
+          <div style="margin-bottom: 15px">Address</div>
+          <div *ngFor="let address of userAddress; let i = index">
+            <div class="edit-head">
+              <div style="display: flex; align-items: center">
+                <input type="radio" name="typeMain" style="margin-top: 0px" />
+                <label class="person-det" for="type" style="margin-left: 5px"
+                  >{{ i + 1 }}. {{ address["type"] }}</label
+                >
+                <p
+                  class="edit"
+                  (click)="addedit = !addedit"
+                  *ngIf="address['addressId'] == checked"
+                  style="cursor: pointer"
+                >
+                  {{ !addedit ? "Edit" : "Cancel" }}
+                </p>
+              </div>
+              <button
+                mat-button
+                *ngIf="addedit && address['addressId'] == checked"
+                class="save"
+                style="cursor: pointer"
+              >
+                SAVE
+              </button>
+            </div>
+            <div *ngIf="expand == false" style="margin-left: 25px">
+              <p>
+                {{ address["address"] }}, {{ address["city"] }},
+                {{ address["state"] }}
+              </p>
+            </div>
+            <div
+              class="add-details"
+              [formGroup]="AddressForm"
+              *ngIf="checked == address['addressId']"
+            >
+              <div>
+                <label for="address">Address</label>
+                <textarea
+                  name="address"
+                  id="address-area"
+                  formControlName="address"
+                  [ngModel]="address['address']"
+                  cols="30"
+                  rows="10"
+                  [attr.disabled]="!addedit ? '' : null"
+                ></textarea>
+              </div>
+              <div class="c-t-div">
+                <div>
+                  <label for="city">city/town</label>
+                  <input
+                    type="text"
+                    formControlName="city"
+                    [ngModel]="address['city']"
+                    [attr.disabled]="!addedit ? '' : null"
+                    name="city"
+                    id=""
+                  />
+                </div>
+                <div>
+                  <label for="state">State</label>
+                  <input
+                    [attr.disabled]="!addedit ? '' : null"
+                    [ngModel]="address['state']"
+                    formControlName="state"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class="radios">
+                <label for="">Type</label>
+                <div>
+                  <div class="radio-item">
+                    <input
+                      formControlName="type"
+                      [ngModel]="address['type']"
+                      [attr.disabled]="!addedit ? '' : null"
+                      type="radio"
+                      name="type"
+                      value="Home"
+                    />
+                    <label for="Home">Home</label>
+                  </div>
+                  <div class="radio-item">
+                    <input
+                      formControlName="type"
+                      [attr.disabled]="!addedit ? '' : null"
+                      type="radio"
+                      name="type"
+                      [ngModel]="address['type']"
+                      value="Work"
+                    />
+                    <label for="Work">Work</label>
+                  </div>
+                  <div class="radio-item">
+                    <input
+                      formControlName="type"
+                      [ngModel]="address['type']"
+                      [attr.disabled]="!addedit ? '' : null"
+                      type="radio"
+                      name="type"
+                      value="Others"
+                    />
+                    <label for="Others">Others</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style="display: flex; justify-content: flex-end"
+        *ngIf="placeorder == 'Address'"
+      >
+        <button mat-button class="save cont">Continue</button>
+      </div>
+    </div>
+  </div>
+  <div class="cart temp">
+    <p style="padding: 20px">Order Summary</p>
+    <div *ngIf="placeorder == 'ordersummary'">
+      <div class="w-wrap" *ngFor="let cartbook of cartDetails">
+        <div class="w-book">
+          <div class="wb-con">
+            <div>
+              <img src="{{ cartbook.bookImage }}" alt="" />
+            </div>
+            <div class="wb-detail">
+              <p class="book-name">{{ cartbook.title }}</p>
+              <p class="author">{{ cartbook.authorName }}</p>
+              <div class="cost">
+                <p class="rupees">Rs. {{ cartbook.price }}</p>
+                <p class="disc">Rs. {{ cartbook.price + 500 }}</p>
+              </div>
+            </div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <div
+        *ngIf="cart.length > 0"
+        style="display: flex; justify-content: flex-end; padding: 20px"
+      >
+        <button
+          mat-button
+          class="order-but"
+          style="align-self: flex-end"
+          *ngIf="placeorder == 'ordersummary'"
+        >
+          Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

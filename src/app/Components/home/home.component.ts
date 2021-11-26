@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookserviceService } from 'src/app/Service/BookService/bookservice.service';
+import { CartserviceService } from 'src/app/Service/cartservice/cartservice.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -19,10 +21,15 @@ export class HomeComponent implements OnInit {
   bookdetails: any;
   UserDetails = JSON.parse(localStorage.getItem('BookStoreUser')!);
   p: number = 1;
-  constructor(private route: Router, private book: BookserviceService) {}
+  constructor(
+    private route: Router,
+    private book: BookserviceService,
+    private cartservice: CartserviceService
+  ) {}
 
   ngOnInit(): void {
     this.getBooks();
+    this.GetCart();
   }
   getBooks() {
     this.book.getBooks().subscribe((result: any) => {
@@ -66,5 +73,15 @@ export class HomeComponent implements OnInit {
           .match(this.search.toLocaleLowerCase());
       });
     }
+  }
+
+  GetCart() {
+    this.cartservice.GetCart().subscribe((result: any) => {
+      this.getCart = result.data;
+      console.log(this.getCart);
+    }),
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      };
   }
 }
